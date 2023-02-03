@@ -1,13 +1,13 @@
 class Cart {
   constructor() {
     this.url = "https://central.ph/eats"
-    this.title = "Cart"
+    this.title = "Cart"  
   }
  
   visit() {
     cy.visit(this.url)
   }
- 
+
   getOpenCartButton() {
     return cy.get('[data-cy="img-eats-landing-parent-37014"]')
   }
@@ -58,7 +58,7 @@ class Cart {
   getCartItemName() {
     return cy.get('.srnt-cart-item-title')
   }
-  
+
   getAddToCartItemName() {
     return cy.get('.srn-cart-details-name')
   }
