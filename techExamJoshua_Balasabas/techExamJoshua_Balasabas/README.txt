@@ -1,4 +1,3 @@
-Open VS Code
 Open terminal
 CD to folder name
 Install Cypress Via NPM: npm install cypress --save-dev
