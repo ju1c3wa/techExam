@@ -8,14 +8,63 @@ class Cart {
     cy.visit(this.url)
   }
  
-  getAddCartButton() {
+  getOpenCartButton() {
     return cy.get('[data-cy="img-eats-landing-parent-37014"]')
   }
  
   getCartDetailsPrice() {
     return cy.get('.srn-cart-details-price')
   }
- 
+  
+  getAddCart() {
+    return cy.get('.srn-button')
+  }
+
+  getEnterLocation() {
+    return cy.get('#query-ft-modal-location')
+  }
+
+  getSelectLocation() {
+    return cy.get('#ui-id-2')
+  }
+
+  getConfirmLocation() {
+    return cy.get('#Delivery > .srn-ft-proceed-btn')
+  }
+
+  getClickBarangayDropdown() {
+    return cy.get(':nth-child(6) > .dropdown > .srn-ft-input')
+  }
+
+  getSelectBarangay() {
+    return cy.get(':nth-child(6) > .dropdown > .srn-ft-brgy-dropdown-menu > .srn-location-select-container > .srn-location-scrollable-list-container > .list-group > :nth-child(1)')
+  }
+
+  getEnterHouseAddress() {
+    return cy.get('#srn-ft-house_no-ft-modal-location')
+  }
+
+  getConfirmLocationButton() {
+    return cy.get('#Delivery > .srn-ft-proceed-btn')
+  }
+
+  getOpenCartImageIcon() {
+    return cy.get('a > img')
+  }
+  getAddedToCartPrice() {
+    return cy.get('.srnt-cart-item-price')
+  }
+
+  getCartItemName() {
+    return cy.get('.srnt-cart-item-title')
+  }
+  
+  getAddToCartItemName() {
+    return cy.get('.srn-cart-details-name')
+  }
+
+
+
 }
  
 module.exports = Cart
