@@ -1,12 +1,8 @@
 Open terminal
 CD to folder name
-Install Cypress Via NPM: npm install cypress --save-dev
+Install Cypress Via NPM: npm install
 Option 1:
-Run Cypress Project - npx cypress open
-Click E2E testing
-Start E2E testing using chrome
-Click add to addToCart.cy.js
-
+Run Cypress Project - npx cypress run
 
 
 Option 2:
