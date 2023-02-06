@@ -2,11 +2,9 @@ import Cart from "../pages/addtocart"
  
  const cart = new Cart()
  
- let addToCartPrice
- let cartPrice
- let addToCartItemName
- let cartItemName
-  
+
+
+
  describe("Go to ph eats", () => {
    beforeEach(() => {
      cart.visit()
@@ -20,17 +18,15 @@ import Cart from "../pages/addtocart"
    it("should Check Item Name and Prices", () => {
       cy.wait(2000)
       cart.getOpenCartButton().click({force: true})
-      cart.getCartDetailsPrice().then(($addPrice) => 
-      {
-      const cartAddedPrice = $addPrice.text()
+      cart.getCartDetailsPrice().then($addPrice => {
+      let cartAddedPrice = $addPrice.text()
       cy.log(cartAddedPrice)
-      addToCartPrice = cartAddedPrice.parseInt
+      cy.wrap(cartAddedPrice).as('cartAddedPrice')
       })
-      cart.getAddToCartItemName().then(($addItemName) =>
-      {
-        const addCartItemName = $addItemName.text()
-        cy.log(addCartItemName)
-        addToCartItemName = addCartItemName
+      cart.getAddToCartItemName().then($addCartItemName =>{
+        let addToCartItemName = $addCartItemName.text()
+        cy.log(addToCartItemName)
+        cy.wrap(addToCartItemName).as('addToCartItemName')
       })
       cy.wait(5000)
       cart.getAddCart().click()
@@ -47,20 +43,26 @@ import Cart from "../pages/addtocart"
       cart.getConfirmLocationButton().click()
       cy.wait(2000)
       cart.getOpenCartImageIcon().click()
-      cart.getAddedToCartPrice().then(($inCartPrice) => 
-      {
-      const insideCartPrice = $inCartPrice.text()
+      cart.getAddedToCartPrice().then($inCartPrice => {
+      let insideCartPrice = $inCartPrice.text()
       cy.log(insideCartPrice)
-      cartPrice = insideCartPrice.parseInt
+      cy.wrap(insideCartPrice).as('insideCartPrice')
       })
-      cart.getCartItemName().then(($cartItemName) => 
-      {
-      const insideCartItemName = $cartItemName.text()
+      cart.getCartItemName().then($cartItemName => {
+      let insideCartItemName = $cartItemName.text()
       cy.log(insideCartItemName)
-      cartItemName = insideCartItemName
+      cy.wrap(insideCartItemName).as('insideCartItemName')
+      })  
+      cy.get('@cartAddedPrice').then(cartAddedPrice => { 
+        cy.log(cartAddedPrice)
+        cy.get('@insideCartPrice').then(insideCartPrice => { 
+        expect(cartAddedPrice).to.equal(insideCartPrice)
       })
-
-      cy.getCartDetailsPrice().should('have.value', addToCartPrice)
-   })
-  
+      })
+     cy.get('@addToCartItemName').then(addToCartItemName => { cy.log(addToCartItemName)
+     cy.get('@insideCartItemName').then(insideCartItemName => { 
+        expect(insideCartItemName).to.equal(addToCartItemName)
+      })
+      })
+    })
  })

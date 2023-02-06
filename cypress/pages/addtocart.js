@@ -56,11 +56,11 @@ class Cart {
     return cy.get('a > img')
   }
   getAddedToCartPrice() {
-    return cy.get('.srnt-cart-item-price', { timeout: 10_000 })
+    return cy.get('.srnt-cart-item-price')
   }
 
   getCartItemName() {
-    return cy.get('.srnt-cart-item-title', { timeout: 10_000 })
+    return cy.get('.srnt-cart-item-title')
   }
 
 
