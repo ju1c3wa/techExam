@@ -1,6 +1,6 @@
 Open terminal
 CD to folder name
-npm install (node v 14.20)
+npm install (node v 14.x.x)
 Option 1:
 Headless
 Run Cypress Project - npx cypress run
